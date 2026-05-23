@@ -1,0 +1,30 @@
+import React, { useState, useEffect } from 'react'
+
+function Users() {
+  const [users, setUsers] = useState([])      // 1. Бош массив, кийин APIдан толо
+  const [loading, setLoading] = useState(true) // 2. Жүктөлүп жатат деген
+
+  useEffect(() => {
+    // 3. Компонент чыкканда 1 жолу иштейт
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json()) // json кылып айлантабыз
+      .then(data => {
+        setUsers(data)         // 4. Stateке салабыз
+        setLoading(false)      // Жүктөлдү
+      })
+      .catch(err => console.log('Ката:', err))
+  }, []) // [] = бир гана жолу иштесин
+
+  if (loading) return <h1>Жүктөлүүдө...</h1>
+
+  return (
+    <div>
+      <h1>Колдонуучулар:</h1>
+      {users.map(user => (
+        <div key={user.id}>{user.name}</div>
+      ))}
+    </div>
+  )
+}
+
+export default Users
