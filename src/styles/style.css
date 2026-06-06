@@ -18,7 +18,8 @@ h1{
      grid-column: span 3;
  }
  .opti{
-   width: 1054px;
+   max-width: 1200px;
+   width: 100%;
    height: 900px;
    border: 2px solid black;
    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROZncylbf90gImrkk-qAAfaTgIhzqpPGvqKA&s");
@@ -26,7 +27,8 @@ h1{
      background-attachment: fixed;  
      background-repeat: no-repeat;
    opacity: 2;
-   margin: 0 auto;
+   /* margin: 0 auto; */
+   margin: 0 20px;
    position: relative;
    z-index: 5px;
    display: grid;
@@ -212,25 +214,161 @@ h1{
         align-items: center;
       margin-left:10px ;
    }
-   /* китептер барактарнын  жасалгасы*/
-  /* .cont1{
-   width: 800px;
-   height: 800px;
-   margin: 0 auto;
-   display: grid;
-   grid-template-columns: repeat(2, 1fr);
-
-  }
-  .bloce{
-   width: 350px;
-   height: 170px;
-   border: 3px solid black;
-   margin: 10px 20px;
-   background-color: blueviolet;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   font-size: 30px;
-   font-weight: 800;
-  } */
+@media (max-width: 768px) and (min-width: 300px){ 
+    
+    body{
+      background-color: white;
+    }
+      .opti{
+      max-width: 768px;
+      width: 100%;
+      margin: 0 30px;
+      min-height: 2300px;
+       /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbJlE5Hv3rI6I2qq80MO121HtLA8Yq1w70HQ&s");  */
+       background-repeat: no-repeat;
+       background-size: cover;
+      margin: 0 auto;
+      position: relative;
+      display: block;
+       border: none;
+       
+    
+    }
+       .fix{
+   max-width: 500px;
+    /* width: 90%; */
+   height: 15px;
+   position:fixed;
+    left: 75%;
+   top: 15%;
+   transform: translateX(-15%);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 15px;
+     font-weight: 900;
+     cursor: pointer;
+      z-index: calc(2);
+      color: #ccc;
+   }
  
+    .cont{
+      width: 370px;
+      height: 570px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+
+    }
+     .bloc{
+      width: 300px;
+      height: 30px;
+      margin: 0 20px;
+      
+     }
+      .bash{
+      width: 400px;
+      height: 680px;
+      margin: 0 auto;
+       margin-bottom: 10px;
+    }
+    .kfc{
+    width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    }
+      .class{
+      width: 300px;
+      height: 50px;
+     margin:  0 auto;
+    }
+     .tun{
+       width: 300px;
+      height: 30px;
+      margin: 0 auto;
+    }
+    .jash{
+       width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    }
+  .block{
+      width: 300px;
+      height: 30px;
+      margin: 0 auto;
+
+    }
+    .ok{
+       width: 300px;
+      height: 50px;
+     margin:  0 auto;
+     margin-bottom: 30px;
+    }
+    .okur{
+      border: none;
+      margin: 0 auto;
+    }
+     
+    .tash{
+      width: 400px;
+      height: 670px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+     } 
+     .okur{
+         display: flex;
+      flex-wrap: wrap;
+     }
+     .pero{
+      width: 300px;
+      height: 40px;
+     margin: 0 auto;
+     display: flex;
+     flex-wrap: wrap;
+     margin-bottom: 55px;
+     }
+     .go{
+      width: 300px;
+      height: 30px;
+      margin: 0 auto;
+     
+     }
+     .avtor{
+      border: none;
+      width: 350px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap; 
+      margin-left: 25px;
+     }
+     .bat{
+     width: 300px;
+     height: 30px;
+     margin: 0 auto;
+     border: 1px solid black;
+     }
+     .bit{
+      width: 300px;
+     height: 30px;
+     border: 1px solid black;
+     margin: 0 auto;
+
+     }
+     
+     footer{
+      width: 600px;
+      height: 200px;
+     }
+     .kattal{
+      width: 600px;
+      height: 700px;
+      border: 3px solid rgb(255, 0, 0);
+      margin: 0 auto;
+      }
+   }

@@ -20,19 +20,19 @@ const myRouter = createBrowserRouter([
             element: <Kitepter/>
           },
           {
-            path: "/audio",
+            path: "audio",
             element: <Audio/>
           },
           {
-            path: "/kana",
+            path: "kana",
             element: <Kana/>
           },
           {
-            path: "/oyun",
+            path: "oyun",
             element: <Oyun/>
           },
           {
-            path: "/login",
+            path: "login",
             element: <Login/>
           }
         ]

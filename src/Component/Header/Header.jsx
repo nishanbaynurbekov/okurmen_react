@@ -9,10 +9,12 @@ function header() {
        id="bash">
     <div class="heder-left">
         <nav class="nav">
-            <Link to="/">Башкы бет </Link>
-            <Link className='none' to="/kitepter">китептер </Link>
-            <Link to="/audio">аудио-китептер </Link>
-            <Link to="/oyun">оюндар </Link>
+           
+            <Link to="/">Үй</Link> 
+            <Link to="kitepter"> китептер </Link>
+            <Link className='none' to="audio"> 
+            аудио-китептер </Link>
+            <Link to="oyun">оюндар </Link>
             </nav>
     </div>  
 <div class="header-right">
@@ -21,7 +23,7 @@ function header() {
         <option value="">RU</option>
         <option value="">ENG</option>
       </select>  
-      <Link to="/login"><button class="kir">кирүү</button></Link> 
+      <Link className='login' to="login"><button class="kir">кирүү</button></Link> 
       </div>       
      </header>
 

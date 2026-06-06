@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import '../styles/style1.css'
 
 function Kitepter() {
   const [ocno, setOcno] = useState(false)
