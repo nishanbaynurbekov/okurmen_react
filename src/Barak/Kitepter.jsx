@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/style1.css'
+import Load from '../loader/Load'
 
 function Kitepter() {
   const [ocno, setOcno] = useState(false)
@@ -28,7 +29,9 @@ function Kitepter() {
      })
      .catch(err => console.log(err))
   }, [])  
-  if (loading) return <h1>juktoluudo</h1>
+  if (loading) { 
+    return <Load/>
+  }
   return (
     <div>
         <h1>Китеп– бул келечекке салынган инвестиция.</h1>
