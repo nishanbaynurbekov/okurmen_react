@@ -6,6 +6,7 @@ import Audio from "./Barak/Audio"
 import Kana from "./Barak/Kana"
 import Oyun from "./Barak/Oyun"
 import Login from "./Barak/Login"
+import Foun from "./Barak/Foun"
 
 const myRouter = createBrowserRouter([
     {
@@ -20,21 +21,26 @@ const myRouter = createBrowserRouter([
             element: <Kitepter/>
           },
           {
-            path: "audio",
+            path: "/audio",
             element: <Audio/>
           },
           {
-            path: "kana",
+            path: "/kana",
             element: <Kana/>
           },
           {
-            path: "oyun",
+            path: "/oyun",
             element: <Oyun/>
           },
           {
-            path: "login",
+            path: "/login",
             element: <Login/>
-          }
+          },
+        {
+          path: "*",
+          element: <Foun/>
+        }
+
         ]
     }
 ])

@@ -1,10 +1,10 @@
 import React from 'react'
-import './load.css'
+import '../styles/load.css'
 
 function load() {
   return (
     <div>
-      <span class="loader"></span>
+      <span className="loader"></span>
     </div>
   )
 }

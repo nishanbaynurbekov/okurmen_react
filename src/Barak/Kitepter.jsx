@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/style1.css'
 import Load from '../loader/Load'
+import apiOkur from '../axios/Api_okur'
+import Api from '../Component/API/Api'
+import List from '../Component/list/List'
 
 function Kitepter() {
   const [ocno, setOcno] = useState(false)
@@ -20,14 +23,20 @@ function Kitepter() {
     setAytmatov(true)
     setOcno(false)
   }
-  useEffect(() => {
-    fetch('https://69e59424ce4e908a155e2650.mockapi.io/Bhh/chyngyz')
-     .then(res => res.json())
-     .then(data =>{
-      setUsers(data)
+  async function getApi() {
+    try {
+      const res = await apiOkur.get()
+      console.log(res.data);
+      setUsers(res.data)
       setLoading(false)
-     })
-     .catch(err => console.log(err))
+      
+    } catch (error) {
+      console.log(error);
+      setLoading(false)
+    }
+  }
+  useEffect(() => {
+     getApi()
   }, [])  
   if (loading) { 
     return <Load/>
@@ -35,19 +44,12 @@ function Kitepter() {
   return (
     <div>
         <h1>Китеп– бул келечекке салынган инвестиция.</h1>
+        <List/>
         
        { aytmatov && (
         <div className='cara'>
    {users.map((user) => (
-      <div className='sabr' key={user.id}>
-        <div className="image">
-        <img src={user.image} alt=''/></div>
-        <h3>{user.name}</h3>
-        <h5>{user.year}</h5>
-        <p>{user.text}</p>
-        <button id="ok_btn">окуу</button>
-        <button id="iz_btn">тандалгандар</button>
-      </div>
+       <Api key={user.id} data={user}/>
     ))}
     </div>
        )}
@@ -62,7 +64,7 @@ function Kitepter() {
         <div className="card">жазуучулар</div>
         <div className="card">жазуучулар</div></div>}
           
-     { gen &&  <div class="cont1" onClick={openApp}>
+     { gen &&  <div className="cont1" onClick={openApp}>
             <div className="bloce wert10">Дүйнө таарыхы</div>
             <div className="bloce wert2">Кыргызстан таарыхы</div>
             <div className="bloce wert3">

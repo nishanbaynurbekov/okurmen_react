@@ -1,60 +1,107 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import '../styles/style.css'
 import { Link } from 'react-router-dom'
+import apiOkur from '../axios/Api_okur'
+import Api from '../Component/API/Api'
+import List from '../Component/list/List'
 
 function Home() {
+    const [ gen, setGen ] = useState(true)
+    const [ ocno, setOcno ] = useState(false)
+    const [ user, setUser ] = useState([])
+    function openApp(){
+         setGen(false)
+          setOcno(true)
+    }
+    function openAytmatov() {
+       setOcno(false)
+       setAytmatov(true)
+    }
+  
+    async function getApi() {
+        try {
+          const res = await apiOkur.get()
+          console.log(res.data);
+          setUser(res.data)
+             
+        } catch (error) {
+            console.log(error);
+            
+        }
+    }
+
+    useEffect(() => {
+        getApi()
+    }, [])
+
   return (
 <>
         <div>
-           <div class="opti">
+            
+           <div className="opti">
         <h1>Окурмен окуу борборборунун электрондук китеп канасы</h1>
-              <Link to="/kitepter"><div class="cont">
-            <div class="bloc wert1">Дүйнө таарыхы</div>
-            <div class="bloc wert2">Кыргызстан таарыхы</div>
-            <div class="bloc wert3">
+        <List/>
+            <div className='barak'>
+                { gen && <div className="cont">
+            <div className="bloc wert1">Дүйнө таарыхы</div>
+            <div className="bloc wert2">Кыргызстан таарыхы</div>
+            <div className="bloc wert3">
                 Ислам таарыхы
             </div>
-            <div class="bloc wert4">Жарык жол</div>
-            <div class="bloc wert5"> Кыргыз адабияты</div>
-            <div class="bloc wert6">Манастануу</div>
-            <div class="bloc wert7">Илимий китептер</div>
-            <div class="bloc wert8">Филасофия</div>
-        </div> </Link>
-        <div class="bash">
-            <div class="kfc"> <div class="class">мугалимдердин эмгеги</div> 
-                <div class="tun">чыгармалар
+            <div className="bloc wert4">Жарык жол</div>
+            <div onClick={openApp} className="bloc wert5"> Кыргыз адабияты</div>
+            <div className="bloc wert6">Манастануу</div>
+            <div className="bloc wert7">Илимий китептер</div>
+            <div className="bloc wert8">Филасофия</div>
+        </div>}
+       { ocno &&  <div className='cont'>
+        <Link to="/kana">
+         <div className="bloc">Чыңгыз Айтматов</div>
+        </Link>
+        <div className="bloc">жазуучулар</div>
+        <div className="bloc">жазуучулар</div>
+        <div className="bloc">жазуучулар</div>
+        <div className="bloc">жазуучулар</div>
+        <div className="bloc">жазуучулар</div>
+        <div className="bloc">жазуучулар</div>
+        <div className="bloc">жазуучулар</div></div>}
+                </div>  
+        <div className="bash">
+            <div className="kfc"> 
+                <div className="class">мугалимдердин эмгеги</div> 
+                <div className="tun">чыгармалар</div>
+                <div className="tun">макалалар</div>
+                <div className="tun">сунуштар</div>
+                <div className="tun">видео сабактар</div>
+                <div className="tun"></div>
+                <div className="tun"></div>
                 </div>
-                <div class="tun">макалалар</div>
-                <div class="tun">сунуштар</div>
-                <div class="tun">видео сабактар</div>
-                <div class="tun"></div>
-                <div class="tun"></div>
-                </div>
-            <div class="jash">
-             <div class="ok"> Мектеп окучуларыны чыгармалары</div>
-            <div class="block"></div>
-            <div class="block"></div>
-            <div class="block"></div>
-            <div class="block"></div>
-            <div class="block"></div>
-            <div class="block"></div>
+            <div className="jash">
+            <div className="ok"> Мектеп окучуларыны чыгармалары</div>
+            <div className="block"></div>
+            <div className="block"></div>
+            <div className="block"></div>
+            <div className="block"></div>
+            <div className="block"></div>
+            <div className="block"></div>
             </div>
         </div>
-            <div class="tash"> <div class="okur">
-                <p class="pero">Окурмен окуу борбору тууралуу кененирек</p>
-                <div class="go">ачылуу тарыхы</div>
-                <div class="go">ийгиликтери</div>
-                <div class="go">эмгек жамааты</div>
-                <div class="go">мугалимдер ийгилиги</div>
-                <div class="go"> студенттер</div>
-                <div class="go">келечекке максаттары</div>
-                <div class="go"></div>
-                <div class="go"></div>
-                <div class="go"></div>
+            <div className="tash"> 
+                <div className="okur">
+                <p className="pero">Окурмен окуу борбору тууралуу кененирек</p>
+                <div className="go">ачылуу тарыхы</div>
+                <div className="go">ийгиликтери</div>
+                <div className="go">эмгек жамааты</div>
+                <div className="go">мугалимдер ийгилиги</div>
+                <div className="go"> студенттер</div>
+                <div className="go">келечекке максаттары</div>
+                <div className="go"></div>
+                <div className="go"></div>
+                <div className="go"></div>
               </div>
-            <div class="avtor">
-                <div class=" ni bit">автор туралуу кененирек</div>
-                <div class=" ni bat">аңгеме</div>
+            <div className="avtor">
+                <div className=" ni bit">автор туралуу кененирек</div>
+                <div className=" ni bat">аңгеме</div>
 
             </div>
          </div>
