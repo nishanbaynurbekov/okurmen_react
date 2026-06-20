@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
     name: "counter",
     initialState: {
         sekond: 60,
-        minut: 5
+        minut: 2
     },
     reducers: {
         number: state => {
