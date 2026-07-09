@@ -31,7 +31,6 @@ function Home() {
     return (
         <div className="opti">
             <h1>Окурмен окуу борборунун электрондук китепканасы</h1>
-            {/* Эгерде List компоненти бүтүндөй бир сапты ээлеши керек болсо, стилден grid-column: span 3 берсең болот */}
             <List /> 
 
             <div className='barak'>
@@ -73,8 +72,8 @@ function Home() {
                       <div className="tun">Макалалар</div>
                       <div className="tun">Сунуштар</div>
                       <div className="tun">Видео сабактар</div>
-                      <div className="tun">Изилдөөлөр</div> {/* Катар толук болуш үчүн кошумча блок */}
-                      <div className="tun">Усулдук ийрим</div> {/* Катар толук болуш үчүн кошумча блок */}
+                      <div className="tun">Изилдөөлөр</div>  
+                      <div className="tun">Усулдук ийрим</div> 
                 </div>
                 
                 <div className="jash">
