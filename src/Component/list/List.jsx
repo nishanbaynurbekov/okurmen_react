@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import { useState} from 'react'
 import '../../styles/list.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faList, faHome, faBook, faFileAudio, faDice, faBookOpen, faAngleLeft, faBookmark } from "@fortawesome/free-solid-svg-icons"
@@ -32,13 +32,12 @@ function List() {
               </Link>
               <Link to="/oyun"><FontAwesomeIcon icon={faDice} onClick={openList}
               className='icon'/></Link>
-             <Link to="/kana">
-             <Link to="/favorites"><FontAwesomeIcon icon={faBookmark} onClick={openList}
-              className='icon'/></Link>
-            
+             <Link to="/kana">            
               <FontAwesomeIcon icon={faBookOpen} onClick={openList}
               className='icon'/>
              </Link>
+             <Link to="/favorites"><FontAwesomeIcon icon={faBookmark} onClick={openList}
+              className='icon'/></Link>
               <FontAwesomeIcon icon={faAngleLeft} onClick={openList} className='icon'/>
             </div>
         }

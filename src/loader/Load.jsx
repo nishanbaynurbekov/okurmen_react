@@ -1,4 +1,3 @@
-import React from 'react'
 import '../styles/load.css'
 
 function load() {

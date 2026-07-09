@@ -1,22 +1,42 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react' // useCallback кошулду
 import List from '../Component/list/List'
 import '../styles/style3.css'
 import { useSelector, useDispatch } from 'react-redux'
-// Жаңы экшендерди импорттодук
 import { number, resetTimer, addScore, minusScore, updateHighScore, clearCurrentScore } from '../redux/timer/Timer' 
-import { Link } from 'react-router-dom'
 
 function Oyun() {
-  // Redux'тан highScore'ду да алып жатабыз
   const { sekond, minut, score, highScore } = useSelector(state => state.timer)
   const dispatch = useDispatch()
+  
   const [isActive, setIsActive] = useState(false)
   const [games, setGames] = useState(false)
 
+  const [one, setOne] = useState(true)
+  const [two, setTwo] = useState(false)
+  const [three, setThree] = useState(false)
+
+  // БИРИНЧИ БӨЛҮМ СТАТЕРИ
+  const [selectedWords1, setSelectedWords1] = useState([])
+  const [result1, setResult1] = useState('')
+  const tuuraJoop1 = ["Сынбасты", "өлбөстү", "жаратпаптыр"]
+  const wordsOptions1 = ["Жарыкты", "кемчиликсизди", "Темирди", "акмакты", "Бузулбасты", "ааламды", "Сынбасты", "өлбөстү", "жаратпаптыр"]
+
+  // ЭКИНЧИ БӨЛҮМ СТАТЕРИ
+  const [selectedWords2, setSelectedWords2] = useState([])
+  const [result2, setResult2] = useState('')
+  const tuuraJoop2 = ["Жакшылык", "кокустан", "сүйүнбө", "кыйынчылык", "бөгөгөндөй"]
+  const wordsOptions2 = ["Кырсык", "атайын", "наалыба", "кайгы", "Жакшылык", "кокустан", "сүйүнбө", "кыйынчылык", "бөгөгөндөй", "Бакыт", "түбөлүкө", "жамандык", "келгендей"]
+ 
+  // ҮЧҮНЧҮ БӨЛҮМ СТАТЕРИ
+  const [selectedWords3, setSelectedWords3] = useState([])
+  const [result3, setResult3] = useState('')
+  const tuuraJoop3 = ["оюну", "саркерлердин", "ишеними", "сынган", "жубата"]
+  const wordsOptions3 = ["чөктү", "адамдардын", "сабыры", "жибите", "оюну", "саркерлердин", "ишеними", "сынган", "жубата", "кыйналды", "досторунун", "ооруган", "сакайта", "алсырады", "жакындарынын", "мээрими", "талкаланган"]
+
   const format = (time) => String(time).padStart(2, "0")
 
-  // Оюнду башынан баштоо логикасы
-  function resetAllGames() {
+  // resetAllGames функциясын useCallback менен ородук, эми ал ар бир рендерде өзгөрбөйт
+  const resetAllGames = useCallback(() => {
     setOne(true)
     setTwo(false)
     setThree(false)
@@ -27,47 +47,40 @@ function Oyun() {
     setResult2('')
     setResult3('')
     
-    dispatch(updateHighScore())   // 1. Адегенде рекордду сактайбыз
-    dispatch(clearCurrentScore()) // 2. Андан кийин азыркы упайды кийинки оюн үчүн 0 кылабыз
-    dispatch(resetTimer())        // 3. Таймерди башынан баштайбыз
-  }
+    dispatch(updateHighScore())   
+    dispatch(clearCurrentScore()) 
+    dispatch(resetTimer())        
+  }, [dispatch])
 
-  // Убакыт бүтүп калганда (Топтогон упайы жоголбойт!)
+  // Убакыт бүткөндө иштей турган эффект
+   
   useEffect(() => {
-    if (minut === 0 && sekond === 0) {
+    if (minut === 0 && sekond === 0 && isActive) {
       alert(`Убакыт бүттү! Оюн токтотулду. \nСиз топтогон упай: ${score} \nСиздин эң мыкты рекордуңуз: ${score > highScore ? score : highScore}`);
-      setGames(false)
-      setIsActive(false)
-      resetAllGames() 
+      
+      // setTimeout штаттарды кийинки рендер циклинде коопсуз өзгөртүүгө жардам берет
+      setTimeout(() => {
+        setGames(false);
+        setIsActive(false);
+        resetAllGames();
+      }, 0);
     }
-  }, [minut, sekond])
+  }, [minut, sekond, score, highScore, isActive, resetAllGames]);
 
-  // Таймер интервалы
+  // Таймер интервалы гана калды (setGames бул жерден өчүрүлдү)
   useEffect(() => {
     let interval = null
     if (isActive) {
       interval = setInterval(() => {
         dispatch(number())
       }, 1000)
-      setGames(true)
     } else {
       clearInterval(interval)
     }
     return () => clearInterval(interval)
   }, [isActive, dispatch])
 
-  const [one, setOne] = useState(true)
-  const [two, setTwo] = useState(false)
-  const [three, setThree] = useState(false)
-
-  // --------------------------------------------------
-  // БИРИНЧИ БӨЛҮМ
-  // --------------------------------------------------
-  const [selectedWords1, setSelectedWords1] = useState([])
-  const [result1, setResult1] = useState('')
-  const tuuraJoop1 = ["Сынбасты", "өлбөстү", "жаратпаптыр"]
-  const wordsOptions1 = ["Жарыкты", "кемчиликсизди", "Темирди", "акмакты", "Бузулбасты", "ааламды", "Сынбасты", "өлбөстү", "жаратпаптыр"]
-
+  // БӨЛҮМ 1 Логикалары
   function handleWordClick1(word) {
     if (selectedWords1.length < 3 && !selectedWords1.includes(word)) {
       setSelectedWords1([...selectedWords1, word])
@@ -91,14 +104,7 @@ function Oyun() {
     }
   }
 
-  // --------------------------------------------------
-  // ЭКИНЧИ БӨЛҮМ
-  // --------------------------------------------------
-  const [selectedWords2, setSelectedWords2] = useState([])
-  const [result2, setResult2] = useState('')
-  const tuuraJoop2 = ["Жакшылык", "кокустан", "сүйүнбө", "кыйынчылык", "бөгөгөндөй"]
-  const wordsOptions2 = ["Кырсык", "атайын", "наалыба", "кайгы", "Жакшылык", "кокустан", "сүйүнбө", "кыйынчылык", "бөгөгөндөй", "Бакыт", "түбөлүкө", "жамандык", "келгендей"]
-
+  // БӨЛҮМ 2 Логикалары
   function handleWordClick2(word) {
     if (selectedWords2.length < 5 && !selectedWords2.includes(word)) {
       setSelectedWords2([...selectedWords2, word])
@@ -122,14 +128,7 @@ function Oyun() {
     }
   }
 
-  // --------------------------------------------------
-  // ҮЧҮНЧҮ БӨЛҮМ
-  // --------------------------------------------------
-  const [selectedWords3, setSelectedWords3] = useState([])
-  const [result3, setResult3] = useState('')
-  const tuuraJoop3 = ["оюну", "саркерлердин", "ишеними", "сынган", "жубата"]
-  const wordsOptions3 = ["чөктү", "адамдардын", "сабыры", "жибите", "оюну", "саркерлердин", "ишеними", "сынган", "жубата", "кыйналды", "досторунун", "ооруган", "сакайта", "алсырады", "жакындарынын", "мээрими", "талкаланган"]
-
+  // БӨЛҮМ 3 Логикалары
   function handleWordClick3(word) {
     if (selectedWords3.length < 5 && !selectedWords3.includes(word)) {
       setSelectedWords3([...selectedWords3, word])
@@ -157,36 +156,41 @@ function Oyun() {
     setOne(false)
     setTwo(true)
   }
+  
   function openPlay2() {
     setTwo(false)
     setThree(true)
   }
   
-  // Оюн ийгиликтүү бүткөндө
- function openPlay3() {
-    const акыркыУпай = score + 100; // Акыркы левелдин упайын кошуу
+  function openPlay3() {
+    const акыркыУпай = score + 100; 
     const эскиРекорд = highScore;
     
     alert(`Куттуктайбыз! Оюнду ийгиликтүү бүттүңүз! \n\n🎯 Бул оюндагы упайыңыз: ${акыркыУпай} \n🏆 Мурунку эң мыкты рекордуңуз: ${эскиРекорд}`);
     
-    setIsActive(false); // ⏱ Таймердин жүрүшүн токтотобуз
-    setGames(false);    // 🎮 Оюн талаасын жаап, кайра "Ойноо" баскычын көрсөтөбүз
-    resetAllGames();    // 🧼 Бардык маанилерди кийинки оюн үчүн тазалайбыз
+    setIsActive(false); 
+    setGames(false);    
+    resetAllGames();    
+  }
+
+  // Баскыч басылганда бир убакта isActive да, games да true болот
+  function handleStartGame() {
+    setIsActive(true)
+    setGames(true)
   }
 
   return (
     <div>
       <List />
-
       <div className='style'>
-        {/* 🏆 Упай тактасы: Эми мурунку рекорд да дайыма көрүнүп турат! */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', flexWrap: 'wrap', marginBottom: '20px' }}>
           <h2>⏱ Убакыт: {format(minut)}:{format(sekond)}</h2>
-          <h2 style={{ color: '#ff9f43' }}>🎯 Азыркы упай: {score}</h2>
-          <h2 style={{ color: '#10ac84' }}>🏆 Эң мыкты рекорд: {highScore}</h2>
+          <div style={{ color: '#ff9f43', fontSize: '1.5rem', fontWeight: 'bold' }}>🎯 Азыркы упай: {score}</div>
+          <div style={{ color: '#10ac84', fontSize: '1.5rem', fontWeight: 'bold' }}>🏆 Эң мыкты рекорд: {highScore}</div>
         </div>
         
-        <button onClick={() => setIsActive(!isActive)} disabled={isActive}>Ойноо</button>
+        {/* Баскыч иштегенде handleStartGame чакырылат */}
+        <button onClick={handleStartGame} disabled={isActive}>Ойноо</button>
 
         {games && (
           <div className='topGames'>

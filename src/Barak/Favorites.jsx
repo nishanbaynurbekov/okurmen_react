@@ -1,5 +1,4 @@
 // src/pages/Favorites.jsx
-import React from 'react';
 import { useSelector } from 'react-redux';
 import Api from '../Component/API/Api';
 import '../styles/style1.css'; // Ошол эле сулуу стилди колдонобуз
@@ -10,8 +9,10 @@ function Favorites() {
   const favoriteBooks = useSelector((state) => state.favorites.favoriteBooks);
 
   return (
+    <div>
+    <List />
+
     <div style={{ padding: '20px' }}>
-      <List />
       <h1 style={{ color: 'purple' }}>Менин тандалган китептерим (Избранные)</h1>
       
       {favoriteBooks.length === 0 ? (
@@ -25,6 +26,7 @@ function Favorites() {
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 }

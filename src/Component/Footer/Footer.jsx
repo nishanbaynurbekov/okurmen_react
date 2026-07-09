@@ -1,5 +1,4 @@
-import React from 'react'
-import '../../styles/cherno.css'
+import '../../styles/footer.css'
 
 function Footer() {
   return (

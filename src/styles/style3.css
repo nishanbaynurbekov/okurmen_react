@@ -92,7 +92,6 @@
     transform: none;
     box-shadow: none;
 }
-
 /* Текшерүү баскычы */
 .check_btn {
     width: 200px;
@@ -108,11 +107,9 @@
     transition: all 0.2s ease;
     margin-top: 20px;
 }
-
 .check_btn:hover {
     transform: scale(1.03);
 }
-
 /* Кийинки бөлүмгө өтүү баскычы */
 .go_play {
     width: 220px;

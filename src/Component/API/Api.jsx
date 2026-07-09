@@ -1,5 +1,4 @@
 // src/Component/API/Api.jsx
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites, removeFromFavorites } from '../../redux/favoritesSlice'; // жолун тууралап ал
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import '../styles/style1.css'
 import Load from '../loader/Load'
 import apiOkur from '../axios/Api_okur'
@@ -43,8 +43,11 @@ function Kitepter() {
   }
 
   useEffect(() => {
-    getApi()
-  }, [])  
+  const fetchData = async () => {
+    await getApi();
+  };
+  fetchData();
+}, []);
 
   if (loading) { 
     return <Load/>
@@ -52,8 +55,8 @@ function Kitepter() {
 
   return (
     <div>
+          <List/>
         <h1>Китеп – бул келечекке салынган инвестиция.</h1>
-        <List/>
         
         {/* КИТЕПТЕРДИН ТИЗМЕСИ (API) */}
         {aytmatov && (

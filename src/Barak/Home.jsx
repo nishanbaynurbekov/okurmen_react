@@ -1,32 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import { useState, } from 'react'
 import '../styles/style.css'
 import { Link } from 'react-router-dom'
-import apiOkur from '../axios/Api_okur'
 import List from '../Component/list/List'
 
 function Home() {
     const [gen, setGen] = useState(true)
     const [ocno, setOcno] = useState(false)
-    const [user, setUser] = useState([])
+ 
 
     function openApp() {
         setGen(false)
         setOcno(true)
     }
-
-    async function getApi() {
-        try {
-            const res = await apiOkur.get()
-            console.log(res.data);
-            setUser(res.data)
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    useEffect(() => {
-        getApi()
-    }, [])
+ 
 
     return (
         <div className="opti">
