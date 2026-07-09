@@ -14,6 +14,7 @@ function header() {
             <Link className='none' to="/audio"> 
             аудио-китептер </Link>
             <Link to="/oyun">оюндар </Link>
+            <Link  to="/favorites">тандалган</Link>
             </nav>
     </div>  
 <div className="header-right">

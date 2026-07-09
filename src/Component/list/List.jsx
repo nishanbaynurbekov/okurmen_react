@@ -1,10 +1,11 @@
 import React, { useState} from 'react'
 import '../../styles/list.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faList, faHome, faBook, faFileAudio, faDice, faBookOpen, faAngleLeft } from "@fortawesome/free-solid-svg-icons"
+import { faList, faHome, faBook, faFileAudio, faDice, faBookOpen, faAngleLeft, faBookmark } from "@fortawesome/free-solid-svg-icons"
 import { Link } from 'react-router-dom'
 
 function List() {
+ 
     const [ list, setList ] = useState(false)
     const [ falist, setFalist] = useState(true)
     function opeHead() {
@@ -32,6 +33,9 @@ function List() {
               <Link to="/oyun"><FontAwesomeIcon icon={faDice} onClick={openList}
               className='icon'/></Link>
              <Link to="/kana">
+             <Link to="/favorites"><FontAwesomeIcon icon={faBookmark} onClick={openList}
+              className='icon'/></Link>
+            
               <FontAwesomeIcon icon={faBookOpen} onClick={openList}
               className='icon'/>
              </Link>

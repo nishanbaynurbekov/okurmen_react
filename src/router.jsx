@@ -7,6 +7,7 @@ import Kana from "./Barak/Kana"
 import Oyun from "./Barak/Oyun"
 import Login from "./Barak/Login"
 import Foun from "./Barak/Foun"
+import Favorites from "./Barak/Favorites"
 
 const myRouter = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ const myRouter = createBrowserRouter([
         {
           path: "*",
           element: <Foun/>
+        },
+        {
+          path: "/favorites",
+          element: <Favorites/>
         }
 
         ]

@@ -1,98 +1,162 @@
-.topGames{
-    width: 900px;
-    height: 800px;
-    /* border: 2px solid #ccc; */
-}
-.style{
-    width: 900px;
-    height: 800px;
-    /* border: 2px solid #ccc; */
-}
-.head1{
-    width: 900px;
-    height: 100px;
-    /* border: 2px solid #ccc; */
+/* Жалпы контейнерлер */
+.style {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.body1{
-    width: 500px;
-    height: 280px;
-    /* border: 1px solid #ccc; */
+.topGames {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.onePlay {
+    width: 100%;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+/* Сүйлөм жайгашкан жогорку бөлүк */
+.head1 {
+    width: 100%;
+    min-height: 80px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.6;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+    box-sizing: border-box;
+}
+
+/* Сүйлөмдүн ичиндеги тандалган сөздөр */
+.head1 span {
+    transition: all 0.2s ease;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+.head1 span:hover {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545 !important; /* Чычканды алып барганда кызыл болуп, өчүрүүнү айтып турат */
+}
+
+/* Баскычтардын контейнери */
+.body1 {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px 0;
 }
-.select{
-    width: 200px;
-    height: 130px;
-    font-size: 23px;
-    background-color: rgb(25, 253, 97);
-    border-radius: 9px;
+
+/* Сөз тандалуучу баскычтар (Мурунку .select) */
+.select {
+    min-width: 100px;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    background: linear-gradient(135deg, #1dd1a1, #10ac84); /* Кооз жашыл градиент */
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
 }
-.go_play{
-    width: 180px;
-    height: 36px;
-    background-color: rgb(47, 186, 241);
-    border-radius: 5px;
-}
-.onePlay{
-    width: 800px;
-    height: 600px;
-    /* border: 2px solid #ccc; */
-}
-@media (max-width: 768px) and (min-width: 300px){ 
-    .style{
-       width: 500px;
-        margin: 0 15px;
-        min-height: 1200px;
-    }
-    .topGames{
-        width: 100%;
-        margin: 0 15px;
-        min-height: 1200px;
-        /* border: 1px solid black; */
-    }
-    .onePlay{
-       width: 100%;
-       min-height: 1200px;
-       margin: 5px 15px;
-        /* border: 1px solid blue; */
 
+.select:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Баскыч басылып, өчүп калгандагы стили (Disabled) */
+.select:disabled {
+    background: #c8d6e5 !important;
+    color: #8395a7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Текшерүү баскычы */
+.check_btn {
+    width: 200px;
+    padding: 12px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #ff9f43, #ee5253); /* Кызгылт сары-кызыл градиент */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(238, 82, 83, 0.3);
+    transition: all 0.2s ease;
+    margin-top: 20px;
+}
+
+.check_btn:hover {
+    transform: scale(1.03);
+}
+
+/* Кийинки бөлүмгө өтүү баскычы */
+.go_play {
+    width: 220px;
+    padding: 12px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #2e86de, #0abde3); /* Көк градиент */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(10, 189, 227, 0.3);
+    transition: all 0.2s ease;
+    margin-top: 15px;
+}
+
+.go_play:hover {
+    background: linear-gradient(135deg, #0abde3, #2e86de);
+}
+
+/* 📱 МОБИЛДИК ТЕЛЕФОНДОРГО ЫҢГАЙЛАШТЫРУУ (Media Queries) */
+@media (max-width: 768px) {
+    .style {
+        padding: 10px;
     }
-    .head1{
-        font-size: 20px;
-        width: 370px;
-        height: 90px;
-        /* border: 1px solid #ccc; */
-        margin: 5px 15px;
-        margin: o auto;
-        padding-top: 9px;
+
+    .onePlay {
+        padding: 15px;
     }
-    .body1{
-        width: 370px;
-        margin: 7px 15px;
-        min-height: 900px;
-        /* border: 1px solid #ccc; */
-        display: flex;
-        flex-wrap: wrap;
-        padding: 0 auto;
-        margin: o auto;
+
+    .head1 {
+        font-size: 18px;
+        min-height: auto;
+        padding: 12px;
     }
-    .select{
-        width: 300px;
-        height: 200px;
-        background-color: gold;
+
+    .select {
+        font-size: 16px;
+        padding: 10px 16px;
+        flex-grow: 1; /* Экранга жараша баскычтар тегиз созулат */
     }
-    .go_play{
-        width: 100%;
-        height: 35px;
-        border-radius: 9px;
-        background-color: rgb(6, 132, 216);
-        font-size: 20px;
-        cursor: pointer;
+
+    .check_btn, .go_play {
+        width: 100%; /* Телефондо баскычтар толук экран болот */
+        font-size: 18px;
     }
 }
