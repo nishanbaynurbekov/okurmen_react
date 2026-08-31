@@ -1,0 +1,143 @@
+/* Жалпы контейнерлер */
+.games__body {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 90px;
+}
+
+.games {
+    width: 100%;
+    margin-top: 20px;
+}
+.games__makal{
+    width: 400px;
+    height: 40px;
+    font-size: 25px;
+    background-color: lime;
+    border-radius: 9px;
+    cursor: pointer;
+    margin-left: 30px
+}
+.games__word{
+    width: 400px;
+    height: 40px;
+    font-size: 25px;
+    background-color: lime;
+    border-radius: 9px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+/* Сүйлөм жайгашкан жогорку бөлүк */
+
+.games__one{
+    display: flex;
+    align-items: center;
+    gap: 1px;
+}
+.select__inpt{
+    width: 100px;
+    background-color: #fff;
+    margin-left: 150px;
+    margin-right: 0;
+}
+.games__one h4{
+    margin-left: 30px;
+    white-space: nowrap;
+}
+.games__two{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 135px;
+}
+.games__two h4{
+    white-space: nowrap;
+    margin-left: 0;
+}
+.h4{
+    margin-left: 150px;
+}
+.select__inpt-2{
+    width: 100px;
+    margin-left: 30px;
+    margin-right: 30px;
+    background-color: white;
+}
+.go_play {
+    width: 220px;
+    padding: 12px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #2e86de, #0abde3); /* Көк градиент */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(10, 189, 227, 0.3);
+    transition: all 0.2s ease;
+    margin-top: 15px;
+}
+
+.go_play:hover {
+    background: linear-gradient(135deg, #0abde3, #2e86de);
+}
+.Toastify__toast-container--top-center {
+  top: 20px !important;
+}
+
+.Toastify__toast {
+  border-radius: 14px !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25) !important;
+  font-weight: 500 !important;
+  /* Анимациянын ылдамдыгын жана жумшактыгын тууралоо */
+  animation-duration: 0.45s !important;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Прогресс-барды да астына сулуу кылып жабыштыруу */
+.Toastify__progress-bar {
+  height: 4px !important;
+  border-bottom-left-radius: 14px !important;
+  border-bottom-right-radius: 14px !important;
+}
+
+/* 📱 МОБИЛДИК ТЕЛЕФОНДОРГО ЫҢГАЙЛАШТЫРУУ (Media Queries) */
+@media (max-width: 768px) {
+    .games__body{
+        margin-top: 0;
+    }
+    .games__word{
+        width: 100%;
+        margin-left: -10px;
+        margin-bottom: 20px;
+    }
+    .games__makal{
+        width: 95%;
+        margin-left: -20px;
+    }
+    .games__studio {
+        padding: 15px;
+    }
+
+    .games__main {
+        font-size: 18px;
+        min-height: auto;
+        padding: 12px;
+    }
+
+    .selectGames {
+        font-size: 16px;
+        padding: 10px 16px;
+        flex-grow: 1; /* Экранга жараша баскычтар тегиз созулат */
+    }
+
+    .resultGames, .go_play {
+        width: 100%; /* Телефондо баскычтар толук экран болот */
+        font-size: 18px;
+    }
+}

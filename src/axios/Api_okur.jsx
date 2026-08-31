@@ -5,3 +5,4 @@ const apiOkur = axios.create({
 })
 
 export default apiOkur
+

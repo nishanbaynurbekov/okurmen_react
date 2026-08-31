@@ -1,13 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
+
+const getInitialRecords = () => {
+
+  try {
+    const parsed = JSON.parse(localStorage.getItem("record"));
+    // Эгер чындап массив болсо өзүн кайтарабыз, болбосо бош массив []
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+};
  
 const tmerSlice = createSlice({
     name: "counter",
     initialState: {
         sekond: 59,
-        minut: 2,
-        score: 0,      // Учурдагы оюндагы упай
-        highScore: 0   // 🏆 Оюнчунун эң жогорку рекорду (мурунку упайы)
+        minut: 4,
+        score: 0,
+        recordScore: 0,
+        highScore: getInitialRecords() // 🏆 Оюнчунун эң жогорку рекорду (мурунку упайы)
     },
+
+    
     reducers: {
         number: state => {
             if (state.minut === 0 && state.sekond === 0) {
@@ -26,9 +40,21 @@ const tmerSlice = createSlice({
             state.score = Math.max(0, state.score - action.payload);
         },
         // 🔄 Жаңы рекордду текшерип сактоо
+
+        
         updateHighScore: state => {
-            if (state.score > state.highScore) {
-                state.highScore = state.score; // Эгер азыркы упай чоң болсо, рекорд жаңырат
+            if (state.score > 0) {
+             if (!Array.isArray(state.highScore)) {
+                state.highScore = []
+             }
+ 
+             state.highScore.push(state.score)
+
+             localStorage.setItem("record", JSON.stringify(state.highScore) )
+            }
+
+            if (state.score > state.recordScore) {
+                state.recordScore = state.score
             }
         },
         // 🧼 Учурдагы упайды гана нөлгө түшүрүү (Рекорд өчпөйт)
@@ -38,8 +64,8 @@ const tmerSlice = createSlice({
         // ⏱ Таймерди гана башынан баштоо
         resetTimer: state => {
             state.sekond = 59;
-            state.minut = 2;
-        }      
+            state.minut = 4;
+        }
     }
 });
 

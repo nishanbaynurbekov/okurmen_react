@@ -1,4 +1,4 @@
-import '../styles/load.css'
+import "./load.css"
 
 function load() {
   return (

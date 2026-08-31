@@ -1,0 +1,214 @@
+/* Башкы контейнер */
+body{
+  background-color: #f4f6f9;
+}
+.bodyHistory {
+  margin-top: 100px;
+  min-height: 100%;
+  padding: 20px;
+  background-color: #f4f6f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Башкы тема тексти */
+.main-title {
+  color: #1e293b;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Баскычтар контейнери */
+.cardStyle {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+/* Негизги кнопкалар */
+.card__favorite,
+.card__count {
+  flex: 1;
+  min-width: 220px;
+  padding: 16px 28px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #ffffff;
+  transition: all 0.25s ease;
+}
+
+.card__favorite {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+  box-shadow: 0 6px 18px rgba(255, 107, 107, 0.35);
+}
+
+.card__favorite:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(255, 107, 107, 0.5);
+}
+
+.card__count {
+  background: linear-gradient(135deg, #7f53ac 0%, #647deef0 100%);
+  box-shadow: 0 6px 18px rgba(100, 125, 238, 0.35);
+}
+
+.card__count:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(100, 125, 238, 0.5);
+}
+
+/* Упайлар чыгуучу негизги карт */
+.cardScore {
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  margin-top: 10px;
+}
+
+.cardScore h4 {
+  margin: 0 0 20px 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+  color: #1e293b;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 12px;
+}
+
+/* Упай тилкелери */
+.card__section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card__section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.section__info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.game-number {
+  font-weight: 700;
+  color: #475569;
+  font-size: 1rem;
+}
+
+.status-tag {
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.score-value {
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+/* Түстөр */
+.card__section.score-red {
+  background-color: #fff5f5;
+  border-left: 6px solid #e53e3e;
+}
+.score-red .score-value,
+.score-red .status-tag {
+  color: #c53030;
+}
+
+.card__section.score-green {
+  background-color: #f0fff4;
+  border-left: 6px solid #38a169;
+}
+.score-green .score-value,
+.score-green .status-tag {
+  color: #276749;
+}
+
+.card__section.score-blue {
+  background-color: #ebf8ff;
+  border-left: 6px solid #3182ce;
+}
+.score-blue .score-value,
+.score-blue .status-tag {
+  color: #2b6cb0;
+}
+
+.no-score {
+  text-align: center;
+  color: #a0aec0;
+  font-weight: 500;
+}
+
+/* Тазалоо кнопкасы */
+.btn-clear {
+  background-color: #e53e3e;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+  display: block;
+  margin: 20px auto 0 auto;
+}
+
+.btn-clear:hover {
+  background-color: #c53030;
+}
+
+/* Артка кайтуу кнопкасынын контейнери */
+.back-container {
+  margin-top: 30px;
+}
+
+.btn-back {
+  width: 250px;
+  height: 42px;
+  background-color: #2b6cb0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-back:hover {
+  background-color: #1a4971;
+}
+@media(max-width: 768px){
+  .bodyHistory{
+    margin-top: 20px;
+  }
+}

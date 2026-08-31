@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 25px;
+  letter-spacing: -0.5px;
+  
+  /* Тамгалардын башы-аягы кыркылып калбашы үчүн: */
+  display: block;
+  line-height: 1.4; /* Бийиктигин ачып берет */
+  padding: 5px 0;   /* Үстүнө жана астына орун берет */
+
+  /* Градиент түс */
+  background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  transition: transform 0.3s ease;
+}
+
+h1:hover {
+  transform: translateY(-2px);
+}
+
+/* Башкы контейнер */
+.home-container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Header */
+.home-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  color: #0f172a;
+  background: #ffffff;
+  padding: 16px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+}
+
+/* Негизги сетка (Grid) */
+.main-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Жалпы карточка контейнери (Section) */
+.section-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #334155;
+  text-align: center;
+}
+
+.teacher-title { color: #059669; }
+.student-title { color: #2563eb; }
+
+/* 2 мамычалуу Grid (Категориялар) */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* 3 мамычалуу Grid */
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* Заманбап кнопкалар / Блоктор */
+.bloc, .tun-card, .go-card, .ni-card {
+  height: 85px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid #e2e8f0;
+  color: black;
+}
+
+/* Түстөр - Сумбулдуу пастел тонустар */
+.bloc {
+  background-color: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.bloc:hover, .tun-card:hover, .go-card:hover, .ni-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.active-click {
+  background-color: #dcfce7;
+  font-weight: 600;
+}
+
+.tun-card {
+  background-color: #fefce8;
+  border-color: #fef08a;
+  height: 75px;
+  font-size: 13px;
+}
+
+.block-card {
+  height: 75px;
+  border-radius: 12px;
+  background-color: #eff6ff;
+  border: 1px dashed #bfdbfe;
+}
+
+.go-card{
+  background-color: #eff6ff;
+  height: 75px;
+  font-size: 12px;
+}
+
+.sub-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.avtor-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px dashed #e2e8f0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/* Мобилдик адаптивность */
+@media (max-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 22px;
+    margin-top: 20px;
+    padding: 0 10px;
+  }
+}

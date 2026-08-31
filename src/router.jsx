@@ -1,13 +1,14 @@
 import { createBrowserRouter } from"react-router-dom"
 import Layout from "./Component/Layout/Layout"
-import Home from "./Barak/Home"
-import Kitepter from "./Barak/Kitepter"
-import Audio from "./Barak/Audio"
-import Kana from "./Barak/Kana"
-import Oyun from "./Barak/Oyun"
-import Login from "./Barak/Login"
-import Foun from "./Barak/Foun"
-import Favorites from "./Barak/Favorites"
+import Home from "./page/Home"
+import Books from "./page/Books"
+import Audio from "./page/Audio"
+import Library from "./page/Library"
+import Games from './page/Games'
+import Login from "./page/Login"
+import Foun from "./page/Foun"
+import History from './page/History'
+import Search from "./page/Search"
 
 const myRouter = createBrowserRouter([
     {
@@ -17,22 +18,22 @@ const myRouter = createBrowserRouter([
           {  index: true,
             element: <Home/>,
           },
-          {
-            path: "/kitepter",
-            element: <Kitepter/>
-          },
+         {
+           path: "books",
+           element: <Books/>
+         },
           {
             path: "/audio",
             element: <Audio/>
           },
           {
-            path: "/kana",
-            element: <Kana/>
+            path: "/library",
+            element: <Library/>
           },
-          {
-            path: "/oyun",
-            element: <Oyun/>
-          },
+         {
+          path: '/games',
+          element: <Games/>
+         },
           {
             path: "/login",
             element: <Login/>
@@ -42,8 +43,13 @@ const myRouter = createBrowserRouter([
           element: <Foun/>
         },
         {
-          path: "/favorites",
-          element: <Favorites/>
+          path: "/history",
+          element: <History/>
+        },
+        {
+          path: "/search/:text",
+          element: <Search/>
+
         }
 
         ]

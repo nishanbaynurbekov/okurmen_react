@@ -1,29 +1,23 @@
  import { Link } from 'react-router-dom'
-import '../../styles/header.css'
+import  "./header.css"
 
 function header() {
   return (
     <div>
-       <header className="head"
-       id="bash">
+       <header className="head">
     <div className="heder-left">
         <nav className="nav">
-           
             <Link to="/">Үй</Link> 
-            <Link to="/kitepter"> китептер </Link>
-            <Link className='none' to="/audio"> 
-            аудио-китептер </Link>
-            <Link to="/oyun">оюндар </Link>
-            <Link  to="/favorites">тандалган</Link>
+            <Link to="/books"> китептер </Link>
+            <Link className='none' to="/audio">аудио-китептер </Link>
+            <Link to="/games"> оюндар</Link>
+            <Link  to="/history"> таарых</Link>
             </nav>
     </div>  
 <div className="header-right">
-      <select name="name" id="">
-        <option value="">KGZ</option>
-        <option value="">RU</option>
-        <option value="">ENG</option>
-      </select>  
-      <Link className='login' to="login"><button className="kir">кирүү</button></Link> 
+     
+      <Link className='login' to="login">
+      <button className="login__btn">кирүү</button></Link> 
       </div>       
      </header>
 

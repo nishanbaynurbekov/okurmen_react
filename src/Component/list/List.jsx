@@ -1,49 +1,75 @@
-import { useState} from 'react'
-import '../../styles/list.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faList, faHome, faBook, faFileAudio, faDice, faBookOpen, faAngleLeft, faBookmark } from "@fortawesome/free-solid-svg-icons"
-import { Link } from 'react-router-dom'
+import { useState } from 'react';
+import './list.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faList,
+  faHome,
+  faBook,
+  faFileAudio,
+  faDice,
+  faBookOpen,
+  faBookmark,
+  faXmark
+} from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 function List() {
- 
-    const [ list, setList ] = useState(false)
-    const [ falist, setFalist] = useState(true)
-    function opeHead() {
-        setList(true)
-        setFalist(false)
-    }
-    function openList() {
-        setFalist(true)
-        setList(false)
-    }
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  // Шилтемелерди иреттүү тизме кылып алдык
+  const menuItems = [
+    { to: '/', icon: faHome, label: 'Башкы барак' },
+    { to: '/books', icon: faBook, label: 'Китептер' },
+    { to: '/audio', icon: faFileAudio, label: 'Аудиолор' },
+    { to: '/games', icon: faDice, label: 'Оюндар' },
+    { to: '/library', icon: faBookOpen, label: 'Китепкана' },
+    { to: '/history', icon: faBookmark, label: 'таарых' },
+  ];
+
   return (
-    <div className='option'>
-        { falist && <div className='font'><FontAwesomeIcon icon={faList} onClick={opeHead}/> </div> }
-      {
-            list && <div className='openList'>
-              <Link to="/">
-             <FontAwesomeIcon icon={faHome} onClick={openList} className='icon'/>
-              </Link>
-              <Link to="/kitepter"><FontAwesomeIcon icon={faBook} onClick={openList}
-              className='icon'/></Link>
-              <Link to="/audio">
-              <FontAwesomeIcon icon={faFileAudio} onClick={openList}
-              className='icon'/>
-              </Link>
-              <Link to="/oyun"><FontAwesomeIcon icon={faDice} onClick={openList}
-              className='icon'/></Link>
-             <Link to="/kana">            
-              <FontAwesomeIcon icon={faBookOpen} onClick={openList}
-              className='icon'/>
-             </Link>
-             <Link to="/favorites"><FontAwesomeIcon icon={faBookmark} onClick={openList}
-              className='icon'/></Link>
-              <FontAwesomeIcon icon={faAngleLeft} onClick={openList} className='icon'/>
-            </div>
-        }
-      
-    </div>
-  )
+    <aside className="mobile-menu">
+      {/* Менюну ачуучу иконка */}
+      {!isOpen && (
+        <button 
+          className="mobile-menu__trigger" 
+          onClick={toggleMenu} 
+          aria-label="Менюну ачуу"
+        >
+          <FontAwesomeIcon icon={faList} />
+        </button>
+      )}
+
+      {/* Толук экранды каптаган меню оверлейи */}
+      <div className={`mobile-menu__overlay ${isOpen ? 'mobile-menu__overlay--open' : ''}`}>
+        <div className="mobile-menu__header">
+          <span className="mobile-menu__title">Мазмун</span>
+          <button 
+            className="mobile-menu__close" 
+            onClick={toggleMenu} 
+            aria-label="Жабуу"
+          >
+            <FontAwesomeIcon icon={faXmark} />
+          </button>
+        </div>
+
+        <nav className="mobile-menu__nav">
+          {menuItems.map((item, index) => (
+            <Link
+              key={index}
+              to={item.to}
+              className="mobile-menu__link"
+              onClick={toggleMenu}
+            >
+              <FontAwesomeIcon icon={item.icon} className="mobile-menu__icon" />
+              <span className="mobile-menu__label">{item.label}</span>
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </aside>
+  );
 }
 
-export default List
+export default List;

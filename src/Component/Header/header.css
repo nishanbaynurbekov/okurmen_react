@@ -1,0 +1,74 @@
+.head {
+  width: 90%;
+  max-width: 1020px;
+  height: 50px; /* Бийиктигин 50px кылдык, тексттер батсын үчүн */
+  background-color: #ffffff; /*Aqua ордуна заманбап ак фон */
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Жеңил, кооз көлөкө */
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center; /* Элементтерди ортосунан түзөө */
+  padding: 0 15px;
+  border-radius: 10px;
+  
+  position: fixed;
+  left: 50%;
+  top: 10px; /* Төбөсүнө жабышпай 10px ылдый түшүрүп койдук */
+  transform: translateX(-50%);
+  z-index: 100;
+} 
+
+.heder-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  gap: 18px; /* Шилтемелердин аралыгын иреттейт */
+  align-items: center;
+}
+
+/* Link тегдеринин стили */
+.nav a {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b; /* Каныккан кочкул түс */
+  text-decoration: none; /* Алдындагы көк сызыкты өчүрөт */
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+/* Шилтемеге чычканды алып баргандагы эффект */
+.nav a:hover {
+  color: #2563eb;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.login__btn {
+  background-color: #2563eb; /* Көк заманбап баскыч */
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  transition: background-color 0.2s ease;
+}
+
+.login__btn:hover {
+  background-color: #1d4ed8;
+}
+
+/* Мобилдик версияда жашыруу */
+@media (max-width: 768px) and (min-width: 300px) {
+  .head {
+    display: none;
+  }
+}
